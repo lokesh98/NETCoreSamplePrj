@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Test_Core3.BusinessLayer.Models.Category>
+<div class="row bg-title">
+    <div class="col-md-6">
+        <h4 class="page-title" style="cursor: s-resize;">
+            <span>Category Management</span>
+        </h4>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav nav-pills pull-right">
+            <li class="nav-item" role="presentation">
+                <a asp-action="Create" asp-controller="Category" class="nav-link bg-primary">Create New</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-md-5">
+        <div class="form-group">
+            <label class="control-label col-md-4">Search By</label>
+            <div class="col-md-8">
+                <input type="text" placeholder="User Id/User Name/Email" class="form-control input-sm" v-model="search.UserName" v-on:keyup.enter="onSearchClick" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="form-group">
+            <label class="control-label col-md-2">Role</label>
+            <div class="col-md-4">
+                <select class="form-control input-sm">
+                    <option value="">Select Role</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" v-on:click="onSearchClick()">
+                Search
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" v-on:click="onSearchClick()">
+                Reset
+            </button>
+        </div>
+    </div>
+</div>
+<hr style="border:1px solid" />
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+                <th>Category Desc</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryId</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.CategoryDescription</td>
+                        <td>
+                            <a asp-controller="Category" asp-action="Edit" asp-route-categoryID="@item.CategoryId">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+            
+        </tbody>
+    </table>
+</div>

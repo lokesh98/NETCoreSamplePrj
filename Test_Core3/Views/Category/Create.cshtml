@@ -1,0 +1,35 @@
+﻿@model Test_Core3.BusinessLayer.Models.Category
+<div class="row bg-title">
+    <div class="col-md-6">
+        <h4 class="">
+            <span class="">Create Category</span>
+        </h4>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
+<div>
+    <form asp-action="Create" method="post" asp-antiforgery="true">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="CategoryName" class="control-label col-md-4"></label>
+                <div class="col-md-8">
+                    <input asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="control-label col-md-4">Category Description</label>
+                <div class="col-md-8">
+                    <input asp-for="CategoryDescription" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group  pull-right">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    <input type="button" value="Reset" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
